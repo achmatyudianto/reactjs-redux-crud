@@ -1,10 +1,17 @@
-import { GET_USERS_LIST, GET_USER_DETAIL } from "../actions/UserAction";
+import {
+  GET_USERS_LIST,
+  GET_USER_DETAIL,
+  POST_USER_CREATE,
+  PUT_USER_EDIT,
+} from "../actions/UserAction";
 
 let initialState = {
   getUsersList: false,
   errorUsersList: false,
   getUserDetail: false,
   errorUserDetail: false,
+  getResponseDataUser: false,
+  errorResponseDataUser: false,
   title: "Mbiodo Academy",
 };
 
@@ -16,12 +23,24 @@ const users = (state = initialState, action) => {
         getUsersList: action.payload.data,
         errorUsersList: action.payload.errorMessage,
       };
-      case GET_USER_DETAIL:
-        return {
-          ...state,
-          getUserDetail: action.payload.data,
-          errorUserDetail: action.payload.errorMessage,
-        };
+    case GET_USER_DETAIL:
+      return {
+        ...state,
+        getUserDetail: action.payload.data,
+        errorUserDetail: action.payload.errorMessage,
+      };
+    case POST_USER_CREATE:
+      return {
+        ...state,
+        getResponseDataUser: action.payload.data,
+        errorResponseDataUser: action.payload.errorMessage,
+      };
+    case PUT_USER_EDIT:
+      return {
+        ...state,
+        getResponseDataUser: action.payload.data,
+        errorResponseDataUser: action.payload.errorMessage,
+      };
 
     default:
       return state;
